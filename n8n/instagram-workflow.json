@@ -1,0 +1,104 @@
+{
+  "name": "Marketing — Instagram Post",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "instagram-post",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-instagram",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/{{ $env.INSTAGRAM_ACCOUNT_ID }}/media",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "options": {
+          "bodyContentType": "json"
+        },
+        "bodyParametersJson": "={{ JSON.stringify({ caption: $json.body.content, image_url: $json.body.image_url || '', access_token: $env.META_ACCESS_TOKEN }) }}"
+      },
+      "id": "instagram-create-container",
+      "name": "Criar Container",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [480, 220],
+      "notes": "Cria o container de mídia. image_url é obrigatório para posts com imagem. Para posts apenas de texto, use Reels ou Stories."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/{{ $env.INSTAGRAM_ACCOUNT_ID }}/media_publish",
+        "options": {
+          "bodyContentType": "json"
+        },
+        "bodyParametersJson": "={{ JSON.stringify({ creation_id: $json.id, access_token: $env.META_ACCESS_TOKEN }) }}"
+      },
+      "id": "instagram-publish",
+      "name": "Publicar Post",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [720, 220]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true, platform: 'instagram', post_id: $json.id, message: 'Post publicado com sucesso no Instagram' }) }}"
+      },
+      "id": "respond-instagram",
+      "name": "Resposta",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [960, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Criar Container",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Container": {
+      "main": [
+        [
+          {
+            "node": "Publicar Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publicar Post": {
+      "main": [
+        [
+          {
+            "node": "Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "description": "Recebe POST com { content: string, image_url?: string } e publica no Instagram via Meta Graph API. Requer variáveis de ambiente: INSTAGRAM_ACCOUNT_ID e META_ACCESS_TOKEN."
+  }
+}

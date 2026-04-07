@@ -1,0 +1,81 @@
+{
+  "name": "Marketing — LinkedIn Post",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "linkedin-post",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-linkedin",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "person": "={{ $credentials.linkedInOAuth2Api.person }}",
+        "text": "={{ $json.body.content }}",
+        "additionalFields": {
+          "visibility": "PUBLIC"
+        }
+      },
+      "id": "linkedin-post",
+      "name": "LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [480, 300],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "CONFIGURE_YOUR_LINKEDIN_CREDENTIAL_ID",
+          "name": "LinkedIn — Thiago Holtz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true, platform: 'linkedin', post_id: $json.id, message: 'Post publicado com sucesso no LinkedIn' }) }}"
+      },
+      "id": "respond-linkedin",
+      "name": "Resposta",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [720, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "description": "Recebe POST com { content: string } e publica no LinkedIn de Thiago Holtz. Configurar credencial OAuth2 do LinkedIn antes de ativar."
+  }
+}
