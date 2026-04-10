@@ -1,97 +1,77 @@
 # Sprint 01 — Marketing Thiago Holtz
 
-**Período:** [DATA INÍCIO] → [DATA FIM] (2 semanas)
-**Status:** Planning
+**Período:** 10/04/2026 → 24/04/2026 (2 semanas)  
+**Status:** Em andamento
 
 ---
 
 ## Objetivo da Sprint
-> _Definir com Thiago antes de iniciar_
 
-- [ ] Meta LinkedIn: ex. +200 seguidores, X impressões
-- [ ] Meta Instagram: ex. X seguidores, Y engajamento
-- [ ] Meta de negócio: ex. 2 conversas inbound qualificadas
+- **LinkedIn:** +300 impressões/post em média, +50 novos seguidores
+- **Negócio:** 2 conversas inbound qualificadas com founders ou C-levels de SaaS/Fintech B2B
 
 ---
 
-## Tema Central da Sprint
-> _Ex: "IA aplicada a RevOps"_
+## Tema Central
+
+**"Como construir uma máquina de receita com IA em 2026"**
+
+Sub-temas: RevOps + IA, GTM data-driven, erros de pipeline, frameworks práticos de CRO.
 
 ---
 
-## Calendário Editorial
+## Calendário Editorial — LinkedIn
 
-### LinkedIn (3-4 posts/semana)
-| Data | Tema | Formato | Status | Link |
-|------|------|---------|--------|------|
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-
-### Instagram (2-3 posts/semana)
-| Data | Tema | Formato | Status | Link |
-|------|------|---------|--------|------|
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
-|      |      |         | Pendente |    |
+| Data | Issue | Tema | Horário | Status |
+|------|-------|------|---------|--------|
+| 14/04 (seg) | #9 | ARR +200% sem contratar mais vendedores | 07h | Aguardando aprovação |
+| 15/04 (ter) | #10 | Erro de GTM no primeiro milhão | 12h | Aguardando aprovação |
+| 17/04 (qui) | #11 | IA não substitui vendedor | 07h | Aguardando aprovação |
+| 18/04 (sex) | #12 | Framework pipeline previsível 90 dias | 12h | Aguardando aprovação |
+| 21/04 (seg) | #13 | R$0 → R$1M ARR em 8 meses | 07h | Aguardando aprovação |
+| 23/04 (qua) | #14 | O que é CRO de verdade em 2026 | 12h | Aguardando aprovação |
 
 ---
 
 ## Tarefas por Agente
 
-### Marketing Generalista
-- [ ] Definir tema e objetivos da sprint
-- [ ] Montar calendário editorial
-- [ ] Briefing para Social Media
-- [ ] Briefing para Growth Hacker
-- [ ] Relatório final da sprint
+### Infra (você)
+- [ ] #1 — Configurar LinkedIn OAuth2 no n8n
+- [ ] #2 — Configurar Meta Graph API no n8n
 
-### Growth Hacker
-- [ ] Análise de performance da sprint anterior
-- [ ] Identificar top 3 temas com maior potencial
-- [ ] Propor 2 experimentos para a sprint
-- [ ] Relatório de métricas semana 1
-- [ ] Relatório final consolidado
+### Marketing Generalista
+- [x] Definir tema e objetivos da sprint
+- [x] Montar calendário editorial
+- [x] Briefing para Social Media
 
 ### Social Media
-- [ ] Criar posts LinkedIn semana 1 (4 posts)
-- [ ] Criar posts LinkedIn semana 2 (4 posts)
-- [ ] Criar posts Instagram semana 1 (3 posts)
-- [ ] Criar posts Instagram semana 2 (3 posts)
-- [ ] Aprovação e agendamento
+- [x] Criar posts LinkedIn semana 1 (issues #9, #10, #11, #12)
+- [x] Criar posts LinkedIn semana 2 (issues #13, #14)
+- [ ] Aprovação de Thiago e disparo via n8n
 
 ---
 
-## Pautas Sugeridas
-> Preencher com Growth Hacker + Generalista
+## Como aprovar e disparar um post
 
-1. 
-2. 
-3. 
-4. 
-5. 
+1. Abra a issue do post (ex: #9)
+2. Leia o conteúdo e edite se quiser
+3. Marque `- [x] Aprovado por Thiago`
+4. Cole o comando `curl` da issue no terminal (ou aguarde n8n configurado)
+5. Marque `- [x] Disparado via n8n`
+6. Feche a issue
 
 ---
 
-## Revisão da Sprint
+## Revisão da Sprint (preencher em 24/04)
 
 **Métricas finais:**
 - LinkedIn: impressões ___ | engajamento ___ | novos seguidores ___
-- Instagram: alcance ___ | engajamento ___ | novos seguidores ___
 - Leads/conversas geradas: ___
 
 **Top 3 aprendizados:**
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 **Ajustes para Sprint 02:**
-- 
+-
