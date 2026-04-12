@@ -6,9 +6,7 @@ on:
 
 jobs:
   dispatch:
-    if: |
-      github.event.label.name == 'approved' &&
-      contains(github.event.issue.labels.*.name, 'linkedin')
+    if: "github.event.label.name == 'approved' && contains(github.event.issue.labels.*.name, 'linkedin')"
     runs-on: ubuntu-latest
 
     steps:
@@ -99,7 +97,7 @@ jobs:
 
             // Extrair sprint label
             const labels = context.payload.issue.labels.map(l => l.name);
-            const sprintLabel = labels.find(l => l.startsWith('sprint:')) || 'sprint: 1';
+            const sprintLabel = labels.find(l => l.startsWith('sprint:') || l.startsWith('sprint-')) || 'sprint-01';
 
             // Criar issue de métricas
             const metricsIssue = await github.rest.issues.create({
