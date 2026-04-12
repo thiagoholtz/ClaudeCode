@@ -6,9 +6,7 @@ on:
 
 jobs:
   dispatch:
-    if: |
-      github.event.label.name == 'approved' &&
-      contains(github.event.issue.labels.*.name, 'linkedin')
+    if: "github.event.label.name == 'approved' && contains(github.event.issue.labels.*.name, 'linkedin')"
     runs-on: ubuntu-latest
 
     steps:
